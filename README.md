@@ -164,7 +164,7 @@ We will deploy a pre-existing MySQL image as an example of a Docker image.
       
    4.  exit from the MySQL CLI.
       
-7. To delete the deployment and the service
+7. Delete the deployment and the service.
    ```cmd
    kubectl delete deployment mysql-deployment 
    kubectl delete service mysql-service 
