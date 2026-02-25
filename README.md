@@ -60,10 +60,10 @@ Docker, Kubernetes and GKE
       
 ## Setting up Google Kubernetes Engine (GKE)
 To set up Google Kubernetes Engine (**GKE**), open the console of the project you have created within the Google Cloud Platform (GCP) during the first milestone.
-1. Set the default compute zone to **northamerica-northeast1-b**
+1. Set the default compute zone to **us-central1-a** 
    
    ```cmd
-   gcloud config set compute/zone northamerica-northeast1-b  
+   gcloud config set compute/zone us-central1-a
    ```
     
 2. Enable GKE by searching for **Kubernetes Engine**. Select **Kubernetes Engine API**. Then, click **Enable**.
@@ -73,12 +73,16 @@ To set up Google Kubernetes Engine (**GKE**), open the console of the project yo
 3. Wait until the API is enabled. Then, create a three-node cluster on GKE called **sofe3980u**. A Node is a worker machine in which docker images and applications can be deployed.
    
    ```cmd
-   gcloud container clusters create sofe3980u --num-nodes=3 
+      gcloud container clusters create sofe3980u \
+        --num-nodes=3 \
+        --disk-size=50 \
+        --machine-type=e2-medium \
+        --zone=us-central1-a
    ```
       
    **Note**: if the authorization windows pop up, click Authorize
    
-   **Note**: if you get an error that there are no available resources to create the nodes, you may need to change the default compute zone (e.g., to **us-central1-a**) or reduce the number of nodes.
+   **Note**: if you get an error that there are no available resources to create the nodes, you may need to change the default compute zone (e.g., to **northamerica-northeast1-b**) or reduce the number of nodes.
 
 ## Deploy MySQL server on GKE
 We will deploy a pre-existing MySQL image as an example of a Docker image.
