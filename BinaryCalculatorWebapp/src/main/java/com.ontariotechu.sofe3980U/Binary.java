@@ -79,4 +79,39 @@ public class Binary
 		return result;
 		
 	}
+	// Logic for Bitwise OR
+public static Binary or(Binary num1, Binary num2) {
+    StringBuilder result = new StringBuilder();
+    int len1 = num1.getValue().length();
+    int len2 = num2.getValue().length();
+    int maxLen = Math.max(len1, len2);
+
+    for (int i = 0; i < maxLen; i++) {
+        char c1 = (i < len1) ? num1.getValue().charAt(len1 - 1 - i) : '0';
+        char c2 = (i < len2) ? num2.getValue().charAt(len2 - 1 - i) : '0';
+        result.insert(0, (c1 == '1' || c2 == '1') ? "1" : "0");
+    }
+    return new Binary(result.toString());
+}
+
+// Logic for Multiplication
+public static Binary multiply(Binary num1, Binary num2) {
+    Binary result = new Binary("0");
+    String s2 = num2.getValue();
+    for (int i = 0; i < s2.length(); i++) {
+        if (s2.charAt(s2.length() - 1 - i) == '1') {
+            String shifted = num1.getValue() + "0".repeat(i);
+            result = Binary.add(result, new Binary(shifted));
+        }
+    }
+    return result;
+}
+
+// Logic for Subtraction (Note: Only handles num1 >= num2)
+public static Binary subtract(Binary num1, Binary num2) {
+    int n1 = Integer.parseInt(num1.getValue(), 2);
+    int n2 = Integer.parseInt(num2.getValue(), 2);
+    int res = Math.max(0, n1 - n2);
+    return new Binary(Integer.toBinaryString(res));
+}
 }	
