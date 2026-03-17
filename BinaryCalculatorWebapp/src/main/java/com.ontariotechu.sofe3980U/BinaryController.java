@@ -32,7 +32,21 @@ public class BinaryController {
 				return "result";
 			default:
 				return "Error";
+case "*":
+        model.addAttribute("result", Binary.multiply(number1, number2).getValue());
+        break;
+    case "|":
+        model.addAttribute("result", Binary.or(number1, number2).getValue());
+        break;
+    case "-":
+        model.addAttribute("result", Binary.subtract(number1, number2).getValue());
+        break;
+    default:
+        return "Error";
+}
+return "result";
 		}
+
 	}
 
 }
