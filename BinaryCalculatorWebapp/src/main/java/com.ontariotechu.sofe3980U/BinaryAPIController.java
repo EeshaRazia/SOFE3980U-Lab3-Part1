@@ -26,5 +26,19 @@ public class BinaryAPIController {
         return  new BinaryAPIResult(number1,"add",number2,Binary.add(number1,number2));
 		// http://localhost:8080/add?operand1=111&operand2=1010
 	}
+	@GetMapping("/multiply")
+public String multiply(@RequestParam(name="operand1") String op1, @RequestParam(name="operand2") String op2) {
+    return Binary.multiply(new Binary(op1), new Binary(op2)).getValue();
+}
+
+@GetMapping("/or")
+public String or(@RequestParam(name="operand1") String op1, @RequestParam(name="operand2") String op2) {
+    return Binary.or(new Binary(op1), new Binary(op2)).getValue();
+}
+
+@GetMapping("/subtract")
+public String subtract(@RequestParam(name="operand1") String op1, @RequestParam(name="operand2") String op2) {
+    return Binary.subtract(new Binary(op1), new Binary(op2)).getValue();
+}
 
 }
