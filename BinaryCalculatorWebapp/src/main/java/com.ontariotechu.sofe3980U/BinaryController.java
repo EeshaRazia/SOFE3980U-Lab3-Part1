@@ -25,28 +25,24 @@ public class BinaryController {
 		model.addAttribute("operand2", operand2);
 		Binary number1=new Binary (operand1);
 		Binary number2=new Binary (operand2);
+		
 		switch(operator)
 		{
 			case "+":
 				model.addAttribute("result", Binary.add(number1,number2).getValue());
-				return "result";
+				break;
+			case "*":
+				model.addAttribute("result", Binary.multiply(number1, number2).getValue());
+				break;
+			case "|":
+				model.addAttribute("result", Binary.or(number1, number2).getValue());
+				break;
+			case "-":
+				model.addAttribute("result", Binary.subtract(number1, number2).getValue());
+				break;
 			default:
 				return "Error";
-case "*":
-        model.addAttribute("result", Binary.multiply(number1, number2).getValue());
-        break;
-    case "|":
-        model.addAttribute("result", Binary.or(number1, number2).getValue());
-        break;
-    case "-":
-        model.addAttribute("result", Binary.subtract(number1, number2).getValue());
-        break;
-    default:
-        return "Error";
-}
-return "result";
 		}
-
+		return "result";
 	}
-
 }
